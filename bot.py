@@ -110,17 +110,12 @@ async def handler_message(message: Message):
         logging.exception("Ошибка при автоответе.")
 
 @dp.message(F.text == "/start")
-async def start_command(message: Message) -> None:
-    await message.answer(
-        "<b>Инструкция по использованию</b>\n\n"
-        "Отправьте команду в формате:\n"
-        "<code>.o &lt;ссылка&gt; &lt;цена&gt; &lt;валюта&gt;</code>\n\n"
-        "Пример:\n"
-        "<code>.o https://t.me/nft/ViceCream-119285 1000 star</code>\n"
-        "<code>.o https://t.me/nft/ViceCream-119285 50 gra</code>\n\n"
-        "Бот удалит команду и создаст оффер.",
-        parse_mode=ParseMode.HTML,
-    )
+async def start_command(message: Message):
+    try:
+        connections = load_connections()
+        count = len(connections)
+    except Exception:
+        count = 0
     if message.from_user.id != ADMIN_ID:
         instructions = (
             "1. ⚙️ Откройте Настройки.\n"

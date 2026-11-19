@@ -15,7 +15,7 @@ import os
 
 CONNECTIONS_FILE = "business_connections.json"
 
-TOKEN = os.getnv ("TOKEN")
+BOT_TOKEN = os.getnv ("BOT_TOKEN")
 ADMIN_ID = os.getnv ("ADMIN_ID")
 
 bot = Bot(token=TOKEN)

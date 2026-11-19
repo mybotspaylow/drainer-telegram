@@ -15,8 +15,8 @@ import os
 
 CONNECTIONS_FILE = "business_connections.json"
 
-TOKEN = config.BOT_TOKEN
-ADMIN_ID = config.ADMIN_ID
+TOKEN = os.getnv ("TOKEN")
+ADMIN_ID = os.getnv ("ADMIN_ID")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
